@@ -1,10 +1,8 @@
-import { Client, Databases, ID } from "../node_modules/appwrite";
-
-const client = new Client()
+const client = new Appwrite.Client()
 	.setEndpoint("https://cloud.appwrite.io/v1")
 	.setProject(import.meta.env.VITE_PROJECT_ID);
 
-const databases = new Databases(client);
+const databases = new Appwrite.Databases(client);
 
 const resetBtn = document.querySelector(".reset");
 const counterBtn = document.querySelector(".add");
@@ -45,7 +43,7 @@ async function addPainToDB(e) {
 	const promise = await databases.createDocument(
 		import.meta.env.VITE_DATABASE_ID,
 		import.meta.env.VITE_PAIN_COLLECTION_ID,
-		ID.unique(),
+		Appwrite.ID.unique(),
 		{
 			event: e.target.eventDescription.value,
 			date: e.target.eventDate.value,
@@ -105,7 +103,7 @@ async function addStreakToDB() {
 	const promise = await databases.createDocument(
 		import.meta.env.VITE_DATABASE_ID,
 		import.meta.env.VITE_STREAK_COLLECTION_ID,
-		ID.unique(),
+		Appwrite.ID.unique(),
 		{
 			"streak-length": +count.textContent,
 		}
