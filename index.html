@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Ouchy Counter</title>
+	</head>
+	<body>
+		<header>
+			<span class="logo">OUCHY Counter</span>
+			<h3>Longest Streak: <span class="streak"></span></h3>
+		</header>
+		<main>
+			<section class="tracker">
+				<div class="counter-display">
+					<h1># OF DAYS WITHOUT PAIN</h1>
+					<h2 class="count">0</h2>
+				</div>
+				<div class="buttons">
+					<button class="add">ADD ANOTHER DAY</button>
+					<button class="reset">LOG PAIN & RESET</button>
+				</div>
+			</section>
+			<button class="toggle-list">SHOW LIST OF PAINFUL MOMENTS</button>
+			<form class="pain-form hidden">
+				<h3>OUCHY FORM</h3>
+				<label for="eventDate"></label>
+				Date<input type="date" name="eventDate" />
+				<label for="eventDescription"></label>
+				What happened this time?<input type="text" name="eventDescription" />
+				<label for="painLevel"></label>
+				Pain Scale (1-10)<input type="number" name="painLevel" />
+				<button type="submit" class="submit">SUBMIT</button>
+			</form>
+			<section class="pain-container hide">
+				<h1>😖 MY PAINFUL MOMENTS 🤬</h1>
+				<ul class="pain-list"></ul>
+				<button class="toggle-list">HIDE LIST OF PAINFUL MOMENTS</button>
+			</section>
+		</main>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
