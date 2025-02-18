@@ -5,6 +5,7 @@ const client = new Appwrite.Client()
 const databases = new Appwrite.Databases(client);
 
 const resetBtn = document.querySelector(".reset");
+const closeBtn = document.querySelector(".close-form");
 const counterBtn = document.querySelector(".add");
 const toggleBtn = document.querySelectorAll(".toggle-list");
 const form = document.querySelector(".pain-form");
@@ -64,6 +65,8 @@ async function addPainfulEventToDom() {
 		import.meta.env.VITE_PAIN_COLLECTION_ID // collectionId
 	);
 
+	sortArrayOfDocuments(response.documents, "date");
+
 	response.documents.forEach((painEvent) => {
 		const li = document.createElement("li");
 		li.innerHTML = `${painEvent.event.toUpperCase()} on ${
@@ -92,11 +95,29 @@ async function addPainfulEventToDom() {
 }
 
 resetBtn.addEventListener("click", showForm);
+closeBtn.addEventListener("click", hideForm);
 
 function showForm() {
 	if (form.classList.contains("hidden")) {
 		form.classList.remove("hidden");
 	}
+}
+
+function hideForm() {
+	form.classList.add("hidden");
+}
+
+function sortArrayOfDocuments(arr, property) {
+	arr.sort((a, b) => {
+		if (b[property] < a[property]) {
+			return -1;
+		}
+		if (b[property] > a[property]) {
+			return 1;
+		}
+		return 0;
+	});
+	return arr;
 }
 
 async function addStreakToDB() {
@@ -117,21 +138,8 @@ async function updateLongestStreak() {
 		import.meta.env.VITE_STREAK_COLLECTION_ID
 	);
 
-	function sortArrayOfObjects(arr, property) {
-		arr.sort((a, b) => {
-			if (b[property] < a[property]) {
-				return -1;
-			}
-			if (b[property] > a[property]) {
-				return 1;
-			}
-			return 0;
-		});
-		return arr;
-	}
-
 	let streaksArr = response.documents;
-	const sorted = sortArrayOfObjects(streaksArr, "streak-length");
+	const sorted = sortArrayOfDocuments(streaksArr, "streak-length");
 	let longestStreak = sorted[0]["streak-length"];
 
 	console.log(sorted);

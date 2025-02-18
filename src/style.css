@@ -191,8 +191,21 @@ button.submit:active {
 }
 
 form {
+	position: relative;
 	color: #260000;
 	text-align: center;
+}
+
+.close-form {
+	cursor: pointer;
+	position: absolute;
+	top: 0.25rem;
+	right: 0.5rem;
+	transition: color 0.25s ease-in;
+}
+
+.close-form:hover {
+	color: #b20000;
 }
 
 input {
