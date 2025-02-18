@@ -1,5 +1,5 @@
 import "./style.css";
-import { Client, Databases, ID } from "appwrite";
+import { Client, Databases, ID } from "../node_modules/appwrite";
 
 const client = new Client()
 	.setEndpoint("https://cloud.appwrite.io/v1")
