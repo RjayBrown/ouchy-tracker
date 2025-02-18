@@ -1,4 +1,3 @@
-import "./style.css";
 import { Client, Databases, ID } from "../node_modules/appwrite";
 
 const client = new Client()
