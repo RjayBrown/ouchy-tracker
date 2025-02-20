@@ -164,7 +164,7 @@ button.submit:active {
 
 	.hide {
 		opacity: 0;
-		right: -25rem;
+		transform: translate(-25rem);
 	}
 
 	.show {
